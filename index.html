@@ -6,7 +6,7 @@
   </head>
   <body>
     <input id="get">
-    <button id="submit" onclick="request(file)">Submit</button>
+    <button id="submit" >Submit</button>
 
     <a id="output"></a>
   </body>
@@ -15,23 +15,14 @@
 
     const btn = document.getElementById("submit");
     const output = document.getElementById("output");
-
-    btn.onclick = display();
     
     let file = "./data/test.csv";
 
-    async function get_content(path) {
-      try {
-        const data = await fetch(path);
-        return data.text();
-      } catch (error) {
-        console.error(error); 
-      }
-    }
 
-    function display() {
-      console.log(get_content(file))
-    }
+    const data = fetch(file);
+
+
+    console.log(data);
   </script>
 
 </html>
