@@ -6,7 +6,7 @@
   </head>
   <body>
     <input id="get">
-    <button id="submit" >Submit</button>
+    <button id="submit" onclick="request_data('./data/test.csv')">Submit</button>
 
     <a id="output"></a>
   </body>
@@ -14,17 +14,24 @@
   <script>
 
     const btn = document.getElementById("submit");
-    const output = document.getElementById("output");
-    
+    const display = document.getElementById("output");
+
     let file = "./data/test.csv";
 
+    function output() {
+      // How to display the output file
+      display.textContent = this.responseText;
+    }
 
-    const data = fetch(file);
+    function request_data(path) {
+      const xhr = new XMLHttpRequest();
+      // Onload, handle the data with output
+      xhr.addEventListener("load", output);
+      xhr.open('GET',path);
+      xhr.send();
+    }
 
-    x = data.text();
 
-
-    console.log(x);
   </script>
 
 </html>
