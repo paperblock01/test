@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+  </head>
+  <body>
+    <input id="get">
+    <button id="submit" onclick="request(file)">Submit</button>
+
+    <a id="output"></a>
+  </body>
+
+  <script>
+
+    const btn = document.getElementById("submit");
+    const output = document.getElementById("output");
+
+    let file = "./data/test.csv";
+
+    let content = fetch(file);
+    console.log(content.text())
+
+  </script>
+
+</html>
