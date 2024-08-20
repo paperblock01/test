@@ -16,11 +16,22 @@
     const btn = document.getElementById("submit");
     const output = document.getElementById("output");
 
+    btn.onclick = display();
+    
     let file = "./data/test.csv";
 
-    let content = fetch(file);
-    console.log(content.text())
+    async function get_content(path) {
+      try {
+        const data = await fetch(path);
+        return data.text();
+      } catch (error) {
+        console.error(error); 
+      }
+    }
 
+    function display() {
+      console.log(get_content(file))
+    }
   </script>
 
 </html>
